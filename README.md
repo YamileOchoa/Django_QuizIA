@@ -115,3 +115,75 @@ python manage.py runserver
 ## Evidencia
 
 ![Ejemplo de ejecución](img/project.png)
+
+---
+
+---
+
+## 📦 Crear la app `quizzes` y el modelo `Quiz`
+
+Creamos la app llamada `quizzes` dentro del proyecto Django:
+
+```bash
+python manage.py startapp quizzes
+```
+
+## ⚙️ Registrar la app en `settings.py`
+
+Para que Django reconozca la nueva app, agrega `'quizzes'` a la lista `INSTALLED_APPS` en el archivo `src/config/settings.py`:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',  # 🆕
+    'quizzes',         # 🆕
+]
+```
+
+Luego, en el archivo `quizzes/models.py`, definimos el modelo `Quiz`:
+
+```python
+from django.db import models
+
+class Quiz(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+```
+
+Este modelo representa cada cuestionario, con campos para el título, descripción y fecha de creación.
+
+---
+
+## Evidencia
+
+![Ejemplo de ejecución](img/quiz.png)
+
+---
+
+## 🛠️ Crear el serializer para el modelo `Quiz`
+
+Creamos un archivo llamado `serializers.py` en la app `quizzes` y definimos el serializer `QuizSerializer` usando Django REST Framework.  
+Este serializer permite transformar instancias del modelo `Quiz` en formatos como JSON, facilitando la comunicación entre el backend y clientes API.
+
+```python
+from rest_framework import serializers
+from .models import Quiz
+
+class QuizSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Quiz
+        fields = ['id', 'title', 'description', 'created_at']
+```
+
+## Evidencia
+
+![Ejemplo de ejecución](img/serializer.png)
