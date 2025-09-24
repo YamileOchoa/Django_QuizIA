@@ -187,3 +187,11 @@ class QuizSerializer(serializers.ModelSerializer):
 ## Evidencia
 
 ![Ejemplo de ejecución](img/serializer.png)
+
+---
+
+## 🚦 Probar el endpoint de Quiz
+
+Se realizó una prueba del endpoint de la API para el modelo `Quiz` y la respuesta fue exitosa, mostrando los datos correctamente en formato JSON.
+
+![Ejemplo de resultado](img/resultado.png)
