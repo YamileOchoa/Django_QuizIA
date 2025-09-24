@@ -41,6 +41,10 @@ Para confirmar la versión de **npm** (administrador de paquetes de Node.js):
 npm --version
 ```
 
+## Evidencia
+
+![Ejemplo de ejecución](img/version.png)
+
 ---
 
 ## 📂 Crear proyecto en Django
@@ -107,3 +111,7 @@ Ejecuta el servidor para verificar que todo funciona:
 ```bash
 python manage.py runserver
 ```
+
+## Evidencia
+
+![Ejemplo de ejecución](img/project.png)
